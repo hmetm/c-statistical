@@ -1,0 +1,28 @@
+//==============================================================================
+//
+//  new
+//
+#ifndef NEW_INCLUDED
+#define NEW_INCLUDED
+
+#include "cstddef"
+
+namespace std
+{
+   struct nothrow_t
+   {
+      nothrow_t() = default;
+   };
+
+   extern nothrow_t const nothrow;
+}
+
+void* operator new(size_t size);
+void* operator new[](size_t size);
+void* operator new(size_t size, const std::nothrow_t&);
+void* operator new[](size_t size, const std::nothrow_t&);
+void* operator new(size_t size, void* place);
+void* operator new[](size_t size, void* place);
+void operator delete(void* addr);
+void operator delete[](void* addr);
+#endif

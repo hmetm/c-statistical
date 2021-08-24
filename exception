@@ -1,0 +1,25 @@
+//==============================================================================
+//
+//  exception
+//
+#ifndef EXCEPTION_INCLUDED
+#define EXCEPTION_INCLUDED
+
+namespace std
+{
+   class exception
+   {
+   public:
+      exception() noexcept;
+      explicit exception(const char* const message) noexcept;
+      exception(const exception& that) noexcept;
+      exception(const exception&& that) noexcept;
+      exception& operator=(const exception& that) noexcept;
+      virtual ~exception() noexcept;
+      virtual const char* what() const noexcept;
+   };
+
+   void terminate();
+}
+
+#endif

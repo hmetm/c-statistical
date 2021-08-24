@@ -1,0 +1,64 @@
+//==============================================================================
+//
+//  vector
+//
+#ifndef VECTOR_INCLUDED
+#define VECTOR_INCLUDED
+
+#include "cstddef"
+#include "iterator"
+#include "memory"
+
+namespace std
+{
+   template< typename T, class alloc = allocator<T>> class vector
+   {
+   public:
+      typedef iterator_t< T > iterator;
+      typedef iterator_t< const T > const_iterator;
+      vector();
+      vector(size_t count, const T& value);
+      vector(const vector& that);
+      ~vector();
+      iterator begin();
+      iterator end();
+      iterator rbegin();
+      iterator rend();
+      const_iterator begin() const;
+      const_iterator cbegin() const;
+      const_iterator cend() const;
+      const_iterator crbegin() const;
+      const_iterator crend() const;
+      const_iterator end() const;
+      const_iterator rbegin() const;
+      const_iterator rend() const;
+      void clear();
+      bool empty() const;
+      void resize(size_t count);
+      void resize(size_t count, const T& value);
+      size_t size() const;
+      void swap(vector& that);
+      const T& back() const;
+      T& back();
+      const T& front() const;
+      T& front();
+      iterator erase(const_iterator& which);
+      iterator erase(const_iterator& begin, const_iterator& end);
+      iterator insert(iterator& where, const T& value);
+      iterator insert(const_iterator& where, const T& value);
+      iterator insert(const_iterator& where, size_t count, const T& value);
+      const T& operator[](size_t pos) const;
+      T& operator[](size_t pos);
+      const T& at(size_t pos) const;
+      T& at(size_t pos);
+      void pop_back();
+      void push_back(const T& value);
+      const T* data() const;
+      T* data();
+      size_t capacity() const;
+      void reserve(size_t capacity);
+      void shrink_to_fit();
+   };
+}
+
+#endif
